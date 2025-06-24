@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucks2Bar - Convert Your Earnings</title>
+    
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="bi bi-currency-dollar"></i> Bucks2Bar-II
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#converter">Converter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section bg-gradient text-white">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Transform Your Earnings</h1>
+                    <p class="lead mb-4">Convert your hard-earned dollars into your favorite beverages with our easy-to-use calculator. See how many drinks your paycheck can buy!</p>
+                    <div class="hero-buttons">
+                        <a href="#converter" class="btn btn-light btn-lg me-3">
+                            <i class="bi bi-calculator"></i> Start Converting
+                        </a>
+                        <a href="#features" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-info-circle"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-icon">
+                        <i class="bi bi-currency-exchange display-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Converter Section -->
+    <section id="converter" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="display-5 fw-bold">Currency to Drinks Converter</h2>
+                        <p class="lead text-muted">Enter your amount and see how many drinks you can afford</p>
+                    </div>
+                    
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <form id="converterForm">
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label for="amount" class="form-label fw-semibold">Amount ($)</label>
+                                        <div class="input-group input-group-lg">
+                                            <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+                                            <input type="number" class="form-control" id="amount" placeholder="0.00" step="0.01" min="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="drinkPrice" class="form-label fw-semibold">Drink Price ($)</label>
+                                        <div class="input-group input-group-lg">
+                                            <span class="input-group-text"><i class="bi bi-cup-straw"></i></span>
+                                            <input type="number" class="form-control" id="drinkPrice" placeholder="5.00" step="0.01" min="0.01" value="5.00">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center mb-4">
+                                    <button type="button" class="btn btn-primary btn-lg px-5" onclick="calculateDrinks()">
+                                        <i class="bi bi-calculator"></i> Calculate
+                                    </button>
+                                </div>
+                                
+                                <div id="result" class="text-center" style="display: none;">
+                                    <div class="alert alert-success alert-lg">
+                                        <h4 class="alert-heading">
+                                            <i class="bi bi-cup-hot"></i> You can afford:
+                                        </h4>
+                                        <p class="mb-0 display-6 fw-bold text-success" id="drinkCount">0</p>
+                                        <p class="mb-0">drinks</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Why Choose Bucks2Bar?</h2>
+                <p class="lead text-muted">Simple, fast, and fun way to visualize your spending power</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-lightning-charge display-4 text-primary"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Lightning Fast</h5>
+                            <p class="card-text text-muted">Get instant calculations with our optimized converter engine.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-phone display-4 text-success"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Mobile Friendly</h5>
+                            <p class="card-text text-muted">Works perfectly on all devices - phone, tablet, or desktop.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-shield-check display-4 text-info"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Privacy First</h5>
+                            <p class="card-text text-muted">All calculations happen locally - your data never leaves your device.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold mb-4">About Bucks2Bar</h2>
+                    <p class="lead mb-4">We believe in making financial decisions more relatable and fun. Instead of thinking in abstract numbers, see your money in terms of real-world purchases.</p>
+                    <p class="mb-4">Whether you're budgeting for a night out, comparing prices, or just curious about your spending power, Bucks2Bar makes it easy to understand the value of your money.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Easy to use interface</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Customizable drink prices</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Instant calculations</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> No registration required</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="about-illustration">
+                        <i class="bi bi-graph-up-arrow display-1 text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Get In Touch</h2>
+                <p class="lead">Have questions or suggestions? We'd love to hear from you!</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-md-4 text-center">
+                            <div class="contact-item">
+                                <i class="bi bi-envelope display-4 mb-3"></i>
+                                <h5>Email</h5>
+                                <p class="mb-0">hello@bucks2bar.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="contact-item">
+                                <i class="bi bi-twitter display-4 mb-3"></i>
+                                <h5>Twitter</h5>
+                                <p class="mb-0">@bucks2bar</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="contact-item">
+                                <i class="bi bi-github display-4 mb-3"></i>
+                                <h5>GitHub</h5>
+                                <p class="mb-0">github.com/bucks2bar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Bucks2Bar. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Made with <i class="bi bi-heart-fill text-danger"></i> for better budgeting</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.2 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
