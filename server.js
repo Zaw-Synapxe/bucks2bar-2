@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const PROJECT_NAME = process.env.PROJECT_NAME || 'Bucks2Bar-II';
 
 // Middleware
 app.use(cors());
@@ -18,7 +19,7 @@ app.use(express.static(path.join(__dirname)));
 app.get('/api/health', (req, res) => {
     res.json({ 
         status: 'OK', 
-        message: 'Bucks2Bar server is running!',
+        message: `${PROJECT_NAME} server is running!`,
         timestamp: new Date().toISOString()
     });
 });
@@ -73,7 +74,7 @@ app.use((err, req, res, next) => {
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`🍺 Bucks2Bar server is running on http://localhost:${PORT}`);
+    console.log(`🍺 ${PROJECT_NAME} server is running on http://localhost:${PORT}`);
     console.log(`📁 Serving static files from: ${__dirname}`);
     console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
 });
