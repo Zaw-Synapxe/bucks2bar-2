@@ -7,7 +7,7 @@
 
 /* Global Styles */
 body {
-    padding-top: 76px; /* Account for fixed navbar */
+    padding-top: 62px; /* Account for fixed navbar */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
